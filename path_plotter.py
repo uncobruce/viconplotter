@@ -127,16 +127,20 @@ def main():
 
 if __name__ == '__main__':
 
-    x = np.array([0,0.1,0.1,-0.1,0,0,0.13,-0.12,0.02,1,2,3,3.4])
-    y = np.array([0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6])
-    theta = np.array([20,30,45,-22,20,123,6,0,0,25,0,-35,180])
+    x1 = np.array([0,0.1,0.1,-0.1,0,0,0.13,-0.12,0.02,1,2,3,3.4])
+    y1 = np.array([0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6])
+    theta1 = np.array([20,30,45,-22,20,123,6,0,0,25,0,-35,180])
+
+    x2 = np.array([0,0.1,0.1,-0.1,0,0,0.13,-0.12,0.02,1,2,3,3.4])
+    y2 = np.array([0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6])
+    theta2 = np.array([20,30,45,-22,20,123,6,0,0,25,0,-35,180])
 
     file = './test1.csv'
-    x1, y1, theta1 = data_loader.read_vicon(file)
-    data_loader.convert_units(x1, y1, theta1)
+    x3, y3, theta3 = data_loader.read_vicon(file)
+    data_loader.convert_units(x3, y3, theta3)
 
-    #plot2Dpath(x1[:2000],y1[:2000],theta1[:2000])
-    plot2Dpath(x, y, theta)
+    #plot2Dpath(x3[:2000],y3[:2000],theta3[:2000])
+    plot2Dpath(x1, y1, theta1)
 
 
     
