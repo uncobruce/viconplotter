@@ -84,8 +84,9 @@ def write2csv(file, freq, tot_frame):
     
 
 
-file = './data/test1.csv'
-x, y, theta = read_vicon(file)
+
+#file = './data/test1.csv'
+#x, y, theta = read_vicon(file)
 # convert_units(x,y,theta)
 
 # print (x)
@@ -98,4 +99,8 @@ x, y, theta = read_vicon(file)
 # #print(time)
 # print(time)
 
+
+
+file = './data/test1.csv'
+x, y, theta = read_vicon(file)
 write2csv(file,100, len(x))

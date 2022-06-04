@@ -12,8 +12,8 @@ import random
 import data_loader
 
 # set x and y axis range for plot
-xlim = [-10, 10]
-ylim = [-2, 10]
+#xlim = [-10, 10]
+#ylim = [-2, 10]
 
 
 def add_rect(x, y, theta, axes, label = False):
@@ -29,9 +29,10 @@ def add_rect(x, y, theta, axes, label = False):
         
         Note: a_t = rotation in degrees anti-clockwise about xy.
     '''
-    width = 0.6
-    height = 0.3
+    width = 4
+    height = 1.5
     n = 0
+    m = 0
     
     for a_x, a_y, a_t in zip(x, y, theta):
         
@@ -39,7 +40,11 @@ def add_rect(x, y, theta, axes, label = False):
                         color='b', alpha=0.9, fill=False,
                         transform=Affine2D().rotate_deg_around(*(a_x,a_y), a_t) + axes.transData)
 
-        axes.add_patch(rec)
+        if True:
+            if m%15 == 0:    
+                axes.add_patch(rec)
+            m+=1
+        
         
         ## show data point labels
         if label:
@@ -73,8 +78,8 @@ def plot2Dpath(x, y, theta, save = False):
     axes_a.plot(x, y, color = 'black', alpha = 0.5, lw =2, ls = '-.', marker = 'o', markeredgecolor = 'black',  
         markersize= 5, markerfacecolor="r", markeredgewidth = 0.75)
     
-    axes_a.set_xlim(xlim)
-    axes_a.set_ylim(ylim)
+    #axes_a.set_xlim(xlim)
+    #axes_a.set_ylim(ylim)
     axes_a.grid(True, color='0.6')
     axes_a.set_facecolor('bisque')
     axes_a.set_title('Robot Trajectory')
@@ -135,12 +140,14 @@ if __name__ == '__main__':
     y2 = np.array([0,0.5,1,1.5,2,2.5,3,3.5,4,4.5,5,5.5,6])
     theta2 = np.array([20,30,45,-22,20,123,6,0,0,25,0,-35,180])
 
-    file = './test1.csv'
+    file = './data/test1.csv'
+    #file = './data/test_square.csv'
     x3, y3, theta3 = data_loader.read_vicon(file)
     data_loader.convert_units(x3, y3, theta3)
 
     #plot2Dpath(x3[:2000],y3[:2000],theta3[:2000])
-    plot2Dpath(x1, y1, theta1)
+    plot2Dpath(x3,y3,theta3)
+    #plot2Dpath(x1, y1, theta1)
 
 
     
